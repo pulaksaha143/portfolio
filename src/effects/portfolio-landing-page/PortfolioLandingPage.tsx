@@ -74,7 +74,7 @@ export function PortfolioLandingPage(props: LandingPageProps & PageTypographyPro
       {...frame}
       customization={customization}
       title="Pulak Saha Portfolio"
-      sourceUrl="/landing-pages/portfolio.html"
+      sourceUrl={`${import.meta.env.BASE_URL}landing-pages/portfolio.html`}
     />
   );
 }
