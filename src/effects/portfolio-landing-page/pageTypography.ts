@@ -3,7 +3,7 @@ import { useMemo } from "react";
 /* ═══════════════════════════════════════════════════════════════════════
    Typography and colour controls for the packaged landing pages.
 
-   The Kage document is a complete authored file served byte-for-byte
+   The Portfolio document is a complete authored file served byte-for-byte
    inside a sandboxed frame, so nothing is rewritten on the way in. The
    controls work the only way that leaves the document untouched: one
    stylesheet appended to the frame's own <head> once it has loaded,

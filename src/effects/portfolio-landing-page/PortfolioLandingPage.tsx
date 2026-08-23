@@ -7,7 +7,7 @@ import {
   type LandingPageCustomization,
   type PageTypographyProps,
 } from "./pageTypography";
-import { KAGE_TYPOGRAPHY } from "./pageRecipes";
+import { PORTFOLIO_TYPOGRAPHY } from "./pageRecipes";
 
 export type LandingPageFrameProps = {
   className?: string;
@@ -66,15 +66,15 @@ export function LandingPageFrame({ className = "", customization, sourceUrl, sty
   );
 }
 
-export function KageLandingPage(props: LandingPageProps & PageTypographyProps) {
+export function PortfolioLandingPage(props: LandingPageProps & PageTypographyProps) {
   const [type, frame] = splitTypographyProps(props);
-  const customization = usePageTypography(KAGE_TYPOGRAPHY, type);
+  const customization = usePageTypography(PORTFOLIO_TYPOGRAPHY, type);
   return (
     <LandingPageFrame
       {...frame}
       customization={customization}
-      title="Kage — Where stillness reveals the unseen"
-      sourceUrl="/landing-pages/kage.html"
+      title="Pulak Saha Portfolio"
+      sourceUrl="/landing-pages/portfolio.html"
     />
   );
 }

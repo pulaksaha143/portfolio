@@ -194,7 +194,7 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 }
 .peek-fr{ display:block; aspect-ratio:16/10;
   background:linear-gradient(180deg, rgba(3,6,9,.04) 24%, rgba(3,6,9,.48) 100%),
-    url('secret-pathways-assets/generated/kage-sanmon-preview.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/portfolio-sanmon-preview.webp') center / cover no-repeat;
   outline:1px solid rgba(223,231,224,.16); outline-offset:-1px;
   box-shadow:0 34px 70px -30px rgba(0,0,0,.9); transition:outline-color .5s; }
 .peek:hover{ transform:translate3d(0,-5px,0); }
@@ -270,17 +270,17 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .card:nth-child(1) .card-fr{
   background:
     linear-gradient(180deg,rgba(3,6,9,.04) 36%,rgba(3,6,9,.72) 100%),
-    url('secret-pathways-assets/generated/kage-approach.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/portfolio-approach.webp') center / cover no-repeat;
 }
 .card:nth-child(2) .card-fr{
   background:
     linear-gradient(180deg,rgba(3,6,9,.06) 36%,rgba(3,6,9,.74) 100%),
-    url('secret-pathways-assets/generated/kage-lantern-court.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/portfolio-lantern-court.webp') center / cover no-repeat;
 }
 .card:nth-child(3) .card-fr{
   background:
     linear-gradient(180deg,rgba(3,6,9,.05) 36%,rgba(3,6,9,.74) 100%),
-    url('secret-pathways-assets/generated/kage-moonwater.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/portfolio-moonwater.webp') center / cover no-repeat;
 }
 .card-fr::after{ content:''; position:absolute; inset:0;
   background:linear-gradient(transparent 46%, rgba(4,6,9,.80)); pointer-events:none; }
@@ -4315,7 +4315,7 @@ function boot() {
     let r;
     try { r = j[1](); }
     catch (err) {
-      console.error('[kage] job "' + j[0] + '" failed', err);
+      console.error('[portfolio] job "' + j[0] + '" failed', err);
       if (i <= 1) return fallback(err);          
     }
     (r && r.then) ? r.then(done, done) : done();
@@ -4329,7 +4329,7 @@ function fallback(err) {
   document.body.classList.remove('is-locked');
   preEl.classList.add('done');
   $$('[data-rv], .mask-line').forEach(e => e.classList.add('rv-in'));
-  window.__kage = window.__secret = { fallback: true, error: String(err && err.message || err) };
+  window.__portfolio = window.__secret = { fallback: true, error: String(err && err.message || err) };
 }
 
 function start() {
@@ -4361,7 +4361,7 @@ function start() {
   running = true; tPrev = performance.now();
   INTRO.t0 = shot !== null ? 0 : (REDUCE ? performance.now() - 4000 : performance.now());
   queue();
-  window.__kage = window.__secret = { RIG: RIG, WORLD: WORLD, WORD: WORD, CAM: CAM, POST: POST, renderer: renderer, scene: scene, camera: camera, anchors: () => anchors };
+  window.__portfolio = window.__secret = { RIG: RIG, WORLD: WORLD, WORD: WORD, CAM: CAM, POST: POST, renderer: renderer, scene: scene, camera: camera, anchors: () => anchors };
 }
 
 if (document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(boot, 0);

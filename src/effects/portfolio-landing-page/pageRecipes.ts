@@ -7,7 +7,7 @@ import {
 } from "./pageTypography";
 
 /* ═══════════════════════════════════════════════════════════════════════
-   The Kage recipe, trimmed from the family cookbook to the one page this
+   The Portfolio recipe, trimmed from the family cookbook to the one page this
    project serves. It restates the document's own typographic decisions as
    its defaults, so the override sheet is a no-op until something is moved.
    Where a page sizes its type with clamp(), the control drives the clamp's
@@ -25,12 +25,12 @@ const ONEST: PageFont = {
   stack: "'Onest', system-ui, -apple-system, 'Helvetica Neue', sans-serif",
 };
 
-/* ── Kage ────────────────────────────────────────────────────────────────
+/* ── Portfolio ────────────────────────────────────────────────────────────────
    Two display scales, .h-hero and .h-sec, both clamped. The control drives
    the hero ceiling and the section ceiling follows at its authored 60/46.
    Headings carrying .jp are left out: that class selects the Japanese face,
    and it would lose the cascade to a bare element selector. */
-export const KAGE_TYPOGRAPHY: PageTypographyRecipe = {
+export const PORTFOLIO_TYPOGRAPHY: PageTypographyRecipe = {
   headingFonts: [ONEST, INSTRUMENT_SERIF, NEWSREADER, GEIST],
   bodyFonts: [ONEST, GEIST, NEWSREADER, INSTRUMENT_SERIF],
   headingWeights: ["400", "500", "600", "700"],
