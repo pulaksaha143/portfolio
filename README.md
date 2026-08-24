@@ -4,7 +4,6 @@
   <p><strong>Where stillness reveals the unseen.</strong></p>
   <p>A curated archive of machine learning systems, diagnostic architectures, and core software foundations by Pulak Saha.</p>
 
-  [![React](https://img.shields.io/badge/React-18.3-blue.svg?style=flat&logo=react)](#)
   [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF.svg?style=flat&logo=vite)](#)
   [![Three.js](https://img.shields.io/badge/Three.js-WebGL-black.svg?style=flat&logo=three.js)](#)
   [![License](https://img.shields.io/badge/License-MIT-green.svg)](#)
@@ -14,7 +13,7 @@
 
 ## Visual & Spatial Concept
 
-**Kage (影)** represents a five-chapter night walk through a Kyoto mountain temple—abstracted into a modern, highly optimized technical portfolio. Blending deep learning and high-performance data engineering with high-fidelity web aesthetics, the experience hinges on spatial depth, ambient lighting, and absolute stillness. 
+**This portfolio** represents a five-chapter night walk through a Kyoto mountain temple—abstracted into a modern, highly optimized technical portfolio. Blending deep learning and high-performance data engineering with high-fidelity web aesthetics, the experience hinges on spatial depth, ambient lighting, and absolute stillness.
 
 It leverages custom WebGL rendering (via Three.js) to display elements like charred cypress (*Yakisugi*), lantern light, and a vermilion moon. The design philosophy is minimalist and intent-driven: no rushed hacks or buzzwords, just patient, scalable architecture that holds its weight under pressure.
 
@@ -31,43 +30,41 @@ The application is structured into four primary chapters, each tied to a specifi
 
 ## Technical Implementation
 
-This project is built using a modern React architecture wrapping a highly bespoke, performance-focused HTML/WebGL document.
+The site is a single, hand-authored HTML document served directly by **Vite** — no framework layer sits between the browser and the experience.
 
-- **Rendering Pipeline & Canvas:** 
-  - Real-time 3D composition utilizing **Three.js** (`three.min.js`).
-  - Implements procedural shader effects, ambient post-processing (bloom, film grain), and custom geometry to render the temple environment.
-- **Animation & Scroll Interpolation:** 
-  - Ultra-smooth scroll hijacking implemented via **Lenis** (`lenis.min.js`), integrated seamlessly with the native `requestAnimationFrame` loop.
+- **Rendering Pipeline & Canvas:**
+  - Real-time 3D composition utilizing **Three.js**.
+  - Procedural shader effects (bloom, film grain, chromatic aberration) and custom geometry render the entire temple environment — all textures are generated at runtime; none are downloaded for the GL scene.
+  - Adaptive resolution governor, clamped device-pixel ratio, frozen shadow maps, and IntersectionObserver-gated secondary simulations keep the frame budget honest.
+  - WebGL context loss degrades gracefully to a static CSS fallback scene.
+- **Animation & Scroll Interpolation:**
+  - Ultra-smooth scroll via **Lenis**, integrated with the native `requestAnimationFrame` loop.
   - Camera transitions (`data-cam`), scroll-reveal triggers (`data-rv`), and spatial text splitting run in parallel to the WebGL draw calls.
+- **Accessibility & Resilience:**
+  - Skip-link, `:focus-visible` styles, focus-managed mobile menu, `prefers-reduced-motion` support throughout, and a `<noscript>` content fallback.
+  - SEO essentials included: Open Graph / Twitter cards, canonical URL, and JSON-LD structured data.
 - **Performance Considerations:**
-  - **Zero External Dependencies:** All fonts, scripts, and high-resolution `.webp` image assets are stored and served locally to guarantee instant loading times and maximum privacy.
-  - Efficient alpha-plane composition and optimized draw calls to maintain 60FPS even with complex visual post-processing.
-- **Framework Integration:** 
-  - Built on **Vite**, **TypeScript**, and **React 18**. The interactive `kage.html` canvas is framed seamlessly within the React lifecycle (`<KageLandingPage />`) via dynamic typography injection.
+  - Self-hosted WOFF2 fonts with `font-display: swap` and preloaded critical faces.
+  - Compressed WebP scenery (~1.5 MB total) served locally — fully offline-capable, zero third-party requests.
 
 ## Directory Structure
 
 ```text
 pulaksaha143/portfolio/
-├── .gitignore
-├── index.html                     # Main application entry point
+├── .github/workflows/          # CI build check + GitHub Pages deploy
+├── index.html                  # The entire site — markup, CSS, and WebGL application
 ├── package.json
-├── vite.config.ts                 # Vite bundler configuration
+├── vite.config.ts              # Vite configuration (base path for Pages)
 ├── public/
-│   └── landing-pages/
-│       ├── kage.html              # The core WebGL/HTML landing experience
-│       └── secret-pathways-assets/# 100% Local assets (WebP, CSS, JS)
-│           ├── fonts.css
-│           ├── lenis.min.js       # Localized Lenis smooth scroll
-│           ├── three.min.js       # Localized Three.js build
-│           ├── foreground/        # Alpha planes and scenery maps
-│           └── generated/         # Pre-rendered environment maps
-├── src/
-│   ├── main.tsx                   # React bootstrapper
-│   ├── App.tsx                    # Root component
-│   └── effects/
-│       └── kage-landing-page/     # React wrapper & customization logic
-└── NOTIMP/                        # Excluded scratch files, raw backups, & PDFs
+│   └── assets/
+│       ├── fonts.css           # @font-face declarations
+│       ├── fonts/              # Self-hosted WOFF2 faces
+│       ├── three.min.js        # Localized Three.js build
+│       ├── lenis.min.js        # Localized Lenis smooth scroll
+│       ├── social-card.jpg     # Open Graph preview card
+│       ├── foreground/         # Alpha-plane scenery layers (WebP)
+│       └── generated/          # Pre-rendered environment maps
+└── NOTIMP/                     # Local-only scratch files (untracked)
 ```
 
 ## Local Development
@@ -110,5 +107,5 @@ To spin up the project locally for development or preview:
 ## License & Attribution
 
 - **License:** Released under the [MIT License](LICENSE).
-- **Core Technology:** [Vite](https://vitejs.dev/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/).
+- **Core Technology:** [Vite](https://vitejs.dev/) serving a hand-authored HTML document.
 - **Graphics & Motion:** Powered by [Three.js](https://threejs.org/) and [Lenis Smooth Scroll](https://github.com/darkroomengineering/lenis).
